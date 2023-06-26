@@ -1,92 +1,70 @@
 export default {
-    // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-    ssr: false,
+  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  ssr: false,
 
-    // Target: https://go.nuxtjs.dev/config-target
-    target: 'static',
+  // Target: https://go.nuxtjs.dev/config-target
+  target: 'static',
 
-    // Global page headers: https://go.nuxtjs.dev/config-head
-    head: {
-        title: 'DC Full Stack Code Challenge',
-        htmlAttrs: {
-            lang: 'en',
-        },
-        meta: [
-            { charset: 'utf-8' },
-            {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1',
-            },
-            { hid: 'description', name: 'description', content: '' },
-            { name: 'format-detection', content: 'telephone=no' },
-        ],
-        link: [
-            {
-                rel: "icon",
-                type: "image/x-icon",
-                href: "/favicon.png",
-            },
-            {
-                rel: "stylesheet",
-                href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap",
-            },
-        ],
+  // Global page headers: https://go.nuxtjs.dev/config-head
+  head: {
+    title: 'DC Full Stack Code Challenge',
+    htmlAttrs: {
+      lang: 'en',
     },
-
-    // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [],
-
-    // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [],
-
-    // Auto import components: https://go.nuxtjs.dev/config-components
-    components: true,
-
-    // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-    buildModules: [
-        // https://go.nuxtjs.dev/typescript
-        '@nuxt/typescript-build',
-        '@nuxtjs/style-resources',
-        '@nuxtjs/fontawesome',
+    meta: [
+      { charset: 'utf-8' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+  },
 
-    // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [
-        // https://go.nuxtjs.dev/bootstrap
-        ['bootstrap-vue/nuxt', { icons: true, css: true }],
-        // https://go.nuxtjs.dev/axios
-        '@nuxtjs/axios',
-    ],
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [],
 
-    publicRuntimeConfig: {
-        axios: {
-            baseURL: process.env.BASEURL || 'http://127.0.0.1:8000',
-        },
-    },
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: ['~/plugins/axios'],
 
-    // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    // https://go.nuxtjs.dev/typescript
+    '@nuxt/typescript-build',
+    'nuxt-typed-vuex',
+  ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    // https://go.nuxtjs.dev/bootstrap
+    ['bootstrap-vue/nuxt', { icons: true, css: true }],
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+  ],
+
+  publicRuntimeConfig: {
     axios: {
-        // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-        baseURL: process.env.NODE_ENV == 'development' ? 'http://127.0.0.1:8000' : process.env.BASEURL,
+      baseURL: process.env.BASEURL || 'http://127.0.0.1:8000',
     },
+  },
 
-    styleResources: {
-        scss: [
-            '~assets/scss/amimations.scss',
-            '~assets/scss/fonts.scss',
-            '~assets/scss/variables.scss',
-            '~assets/scss/styles.scss',
-        ]
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASEURL || 'http://127.0.0.1:8000',
     },
-    fontawesome: {
-        component: 'Fa',
-        suffix: false,
-        icons: {
-            solid: true,
-            brands: true,
-        },
-    },
+  },
 
-    // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {},
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    baseURL: process.env.NODE_ENV == 'development' ? 'http://127.0.0.1:8000' : process.env.BASEURL,
+  },
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {},
 };
